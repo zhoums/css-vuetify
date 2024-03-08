@@ -60,9 +60,9 @@
     &.v-field--focused
       color: $field-control-solo-inverted-focused-color
 
-  &--variant-filled
-    border-bottom-left-radius: 0
-    border-bottom-right-radius: 0
+  &--variant-filled 
+    /*border-bottom-left-radius: 0*/
+    /*border-bottom-right-radius: 0*/
 
   &--variant-solo,
   &--variant-solo-inverted,
@@ -464,8 +464,12 @@
 
 .v-field--variant-filled
   .v-field__overlay
-    background-color: currentColor
-    opacity: $field-overlay-filled-opacity
+    /*background-color: currentColor*/
+    /*opacity: $field-overlay-filled-opacity*/
+    border:1px solid
+    background-color: #999
+    opacity: 0.8
+    /* 临时处理办法 ^_^!!! */
     transition: opacity $field-subtle-transition-timing
 
   &.v-field--has-background .v-field__overlay
