@@ -15,11 +15,7 @@
         <template v-slot:text>
           <v-row>
             <v-col cols="4">
-              <v-text-field
-                label="Regular"
-                model-value="John Doe"
-                disabled
-              ></v-text-field>
+              <v-text-field model-value="John Doe" disabled></v-text-field>
             </v-col>
             <v-col cols="4">
               <v-text-field
