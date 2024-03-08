@@ -10,25 +10,97 @@ module.exports = {
     // 'plugin:import/typescript', // slow, only enable if needed
   ],
   rules: {
-    'no-console': 'error',
-    'no-debugger': 'error',
+    "no-var": "error",
+    // allow paren-less arrow functions
+    "arrow-parens": ["error", "as-needed"],
+    // set maximum line characters
+    "max-len": [
+      "error",
+      {
+        code: 140,
+        ignoreUrls: true,
+        ignoreTemplateLiterals: true,
+        ignoreTrailingComments: true,
+      },
+    ],
+    complexity: ["error", 32],
+    semi::"off",
+    quotes: [
+      "off",
+      "single",
+      {
+        avoidEscape: true,
+        allowTemplateLiterals: true,
+      },
+    ],
+    "no-console": "off",
+    "comma-dangle": [
+      "error",
+      {
+        arrays: "always-multiline",
+        objects: "always-multiline",
+        imports: "always-multiline",
+        exports: "always-multiline",
+        functions: "only-multiline",
+      },
+    ],
+    // allow debugger during development
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-return-assign": "off",
+    "no-unused-vars": "error",
+    "no-empty": "error",
+    "array-bracket-spacing": ["error", "never"],
+    "object-curly-spacing": ["error", "always"],
+    "space-before-function-paren": [
+      "off",
+      {
+        anonymous: "always",
+        named: "always",
+        asyncArrow: "always",
+      },
+    ],
+    "no-return-await": "warn",
+    "object-shorthand": ["error", "always"],
+    "no-extra-semi": "error",
+    "prefer-const": [
+      "error",
+      {
+        destructuring: "all",
+        ignoreReadBeforeAssign: true,
+      },
+    ],
+    "no-prototype-builtins": "off",
+    "no-void": "off",
+    "no-case-declarations": "off",
+    indent: [
+      "warn",
+      2,
+      {
+        ...require("eslint-config-standard").rules.indent[2],
+        flatTernaryExpressions: true,
+        offsetTernaryExpressions: false,
+      },
+    ],
+    "sort-imports": [
+      "warn",
+      {
+        ignoreDeclarationSort: true,
+        ignoreCase: true,
+      },
+    ],
+    "multiline-ternary": "off",
 
-    // 'vue/html-self-closing': 'off',
-    // 'vue/html-closing-bracket-spacing': 'off',
-    // 'local-rules/no-render-string-reference': 'error',
-    'local-rules/no-components-index': 'error',
-    'local-rules/no-nullish-coalescing-in-condition': 'error',
+    "sonarjs/cognitive-complexity": "off",
+    "sonarjs/no-duplicate-string": "off",
 
-    'no-restricted-imports': ['error', {
-      paths: [{
-        name: 'vue',
-        importNames: ['defineComponent'],
-        message: 'Please use wrapped function from @/util instead'
-      }]
-    }],
-
-    // 'import/no-cycle': 'warn',
-    // 'import/no-self-import': 'warn',
+    // Not in override, these apply to non-.vue files too
+    "vue/require-default-prop": "off",
+    "vue/require-prop-types": "off",
+    "vue/one-component-per-file": "off",
+    "vue/custom-event-name-casing": [
+      "error",
+      { ignores: ["/^[a-z]+(?:-[a-z]+)*:[a-z]+(?:-[a-z]+)*$/u"] },
+    ],
   },
   overrides: [
     {
