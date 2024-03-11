@@ -18,6 +18,9 @@
               <v-text-field model-value="John Doe" disabled></v-text-field>
             </v-col>
             <v-col cols="4">
+              <v-text-field model-value="John Doe" readonly></v-text-field>
+            </v-col>
+            <v-col cols="4">
               <v-text-field
                 model-value="John Doe"
                 variant="outlined"

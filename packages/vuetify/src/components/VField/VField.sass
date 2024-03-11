@@ -342,7 +342,7 @@
   .v-field--variant-underlined &
     &::before
       border-color: currentColor
-      border-style: solid
+      border-style: none
       border-width: 0 0 var(--v-field-border-width)
       opacity: var(--v-field-border-opacity)
       transition: opacity $field-subtle-transition-timing
@@ -352,7 +352,7 @@
   .v-field--variant-underlined &
     &::after
       border-color: currentColor
-      border-style: solid
+      border-style: none
       border-width: 0 0 $field-focused-border-width
       transform: scaleX(0)
       transition: transform $field-transition-timing
@@ -481,6 +481,12 @@
 
   &.v-field--focused .v-field__overlay
     opacity: calc((#{$field-overlay-filled-opacity} + #{map.get(settings.$states, 'focus')}) * var(--v-theme-overlay-multiplier))
+
+.v-input--readonly
+  .v-field--variant-filled
+    .v-field__overlay
+      background-color: #dedede
+      border-color: #aeaeae
 
 .v-field--variant-solo-filled
   .v-field__overlay
