@@ -30,6 +30,8 @@
   &--disabled
     opacity: var(--v-disabled-opacity)
     pointer-events: none
+    background-color: #d4d4d4
+    border:1px solid #333
 
   --v-field-padding-start: #{$field-control-padding-start}
   --v-field-padding-end: #{$field-control-padding-end}
@@ -350,11 +352,15 @@
   .v-field--variant-underlined &
     &::before
       border-color: currentColor
-      border-style: none
+      border-style: solid
       border-width: 0 0 var(--v-field-border-width)
       opacity: var(--v-field-border-opacity)
       transition: opacity $field-subtle-transition-timing
       @include tools.absolute(true)
+      
+  .v-field--variant-filled &
+    &::before
+      border-style: none
 
   .v-field--variant-filled &,
   .v-field--variant-underlined &
@@ -472,12 +478,8 @@
 
 .v-field--variant-filled
   .v-field__overlay
-    /*background-color: currentColor*/
-    /*opacity: $field-overlay-filled-opacity*/
-    border:1px solid
-    background-color: #999
-    opacity: 0.8
-    /* 临时处理办法 ^_^!!! */
+    background-color: currentColor
+    opacity: $field-overlay-filled-opacity
     transition: opacity $field-subtle-transition-timing
 
   &.v-field--has-background .v-field__overlay
@@ -489,15 +491,6 @@
 
   &.v-field--focused .v-field__overlay
     opacity: calc((#{$field-overlay-filled-opacity} + #{map.get(settings.$states, 'focus')}) * var(--v-theme-overlay-multiplier))
-
-
-/* add by Sam */
-.v-input--readonly
-  .v-field--variant-filled
-    .v-field__overlay
-      background-color: #dedede
-      border-color: #aeaeae
-/* add by Sam */
 
 .v-field--variant-solo-filled
   .v-field__overlay
@@ -511,6 +504,14 @@
 
   &.v-field--focused .v-field__overlay
     opacity: calc((#{$field-overlay-filled-opacity} + #{map.get(settings.$states, 'focus')}) * var(--v-theme-overlay-multiplier))
+
+/* add by Sam */
+.v-input.v-input--readonly
+  .v-field__overlay
+    background-color: #d4d4d4
+    border:1px solid #333
+    opacity: 0.4
+/* add by Sam */
 
 .v-field--variant-solo-inverted
   .v-field__overlay
