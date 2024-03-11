@@ -30,8 +30,6 @@
           <v-row> </v-row>
         </template>
       </v-card>
-      <v-text-field label="Label"></v-text-field>
-      <v-text-field model-value="John Doe" variant="outlined"></v-text-field>
     </v-container>
   </v-app>
 </template>
