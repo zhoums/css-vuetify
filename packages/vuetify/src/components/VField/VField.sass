@@ -5,6 +5,14 @@
 @use '../../styles/tools'
 @use './variables' as *
 
+/* Sam: input border color*/
+.v-field.v-field--focused
+    .v-field__outline
+      .v-field__outline__start,
+      .v-field__outline__end
+        border-color: #9e8a57
+/* Sam: input border color*/
+
 /* region INPUT */
 .v-field
   display: grid
@@ -482,11 +490,14 @@
   &.v-field--focused .v-field__overlay
     opacity: calc((#{$field-overlay-filled-opacity} + #{map.get(settings.$states, 'focus')}) * var(--v-theme-overlay-multiplier))
 
+
+/* add by Sam */
 .v-input--readonly
   .v-field--variant-filled
     .v-field__overlay
       background-color: #dedede
       border-color: #aeaeae
+/* add by Sam */
 
 .v-field--variant-solo-filled
   .v-field__overlay
