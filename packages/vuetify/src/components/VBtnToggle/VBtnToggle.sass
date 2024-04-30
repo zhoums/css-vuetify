@@ -3,4 +3,5 @@
 
 .v-btn-toggle
   > .v-btn.v-btn--active:not(.v-btn--disabled)
+    border: 2px solid rgb(var(--v-theme-primary)) !important
     @include tools.active-states('> .v-btn__overlay', $btn-toggle-selected-opacity)
