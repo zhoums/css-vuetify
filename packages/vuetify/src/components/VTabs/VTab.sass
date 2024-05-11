@@ -22,6 +22,15 @@
   background: currentColor
   pointer-events: none
   opacity: 0
+  &::before 
+    content: ""
+    width: 8px
+    height: 8px
+    border: solid currentColor
+    background: currentColor
+    border-width: 2px 2px 0 0
+    transform: translate(-50%, -50%) rotate(-45deg)
+    position: absolute
 
   .v-tab--selected &
     opacity: 1

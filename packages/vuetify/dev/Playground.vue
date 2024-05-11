@@ -5,7 +5,8 @@
         <template v-slot:title> This is Button </template>
 
         <template v-slot:text>
-          <v-btn color="golden">button</v-btn>
+          <v-btn color="golden" prepend-icon="mdi-airplane">button</v-btn>
+          <v-btn class="mx-4" color="golden">button</v-btn>
           <v-btn class="mx-4" color="golden-2">button</v-btn>
 
           <v-row class="my-2"></v-row>
@@ -16,10 +17,13 @@
             variant="outlined"
             mandatory
           >
-            <v-btn icon="mdi-format-align-left" value="1"></v-btn>
-            <v-btn icon="mdi-format-align-center" value="2"></v-btn>
-            <v-btn icon="mdi-format-align-right" value="3"></v-btn>
-            <v-btn icon="mdi-format-align-justify" value="4"></v-btn>
+            <v-btn prepend-icon="mdi-format-align-left" value="1">Button</v-btn>
+            <v-btn prepend-icon="mdi-format-align-right" value="3"
+              >Button</v-btn
+            >
+            <v-btn prepend-icon="mdi-format-align-justify" value="4">
+              Button
+            </v-btn>
           </v-btn-toggle>
         </template>
       </v-card>
@@ -56,6 +60,13 @@
           label="Switch"
         ></v-switch>
       </v-card>
+      <v-card width="400" class="ma-2">
+        <v-tabs dark v-model="tab" color="primary">
+          <v-tab value="one">Item One</v-tab>
+          <v-tab value="two">Item Two</v-tab>
+          <v-tab value="three">Item Three</v-tab>
+        </v-tabs>
+      </v-card>
     </div>
   </v-app>
 </template>
@@ -63,4 +74,5 @@
 <script setup>
 import { ref, reactive } from "vue";
 const toggle = ref("2");
+const tab = ref("");
 </script>
