@@ -18,13 +18,23 @@
             mandatory
           >
             <v-btn prepend-icon="mdi-format-align-left" value="1">Button</v-btn>
-            <v-btn prepend-icon="mdi-format-align-right" value="3"
-              >Button</v-btn
-            >
+            <v-btn prepend-icon="mdi-format-align-right" value="3">
+              Button
+            </v-btn>
             <v-btn prepend-icon="mdi-format-align-justify" value="4">
               Button
             </v-btn>
           </v-btn-toggle>
+          <v-row class="ma-4">
+            <v-tooltip v-model="showTip" @update:model-value location="top">
+              <template v-slot:activator="{ props }">
+                <v-btn icon v-bind="props">
+                  <v-icon color="grey-lighten-1"> mdi-cart </v-icon>
+                </v-btn>
+              </template>
+              <span>Programmatic tooltip</span>
+            </v-tooltip>
+          </v-row>
         </template>
       </v-card>
 
@@ -75,4 +85,5 @@
 import { ref, reactive } from "vue";
 const toggle = ref("2");
 const tab = ref("");
+const showTip = ref(false);
 </script>
