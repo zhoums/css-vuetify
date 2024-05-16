@@ -25,8 +25,10 @@
               Button
             </v-btn>
           </v-btn-toggle>
+
+          <h3 class="mt-4">This is Tooltip</h3>
           <v-row class="ma-4">
-            <v-tooltip v-model="showTip" @update:model-value location="top">
+            <v-tooltip v-model="showTip" location="left">
               <template v-slot:activator="{ props }">
                 <v-btn icon v-bind="props">
                   <v-icon color="grey-lighten-1"> mdi-cart </v-icon>
@@ -35,6 +37,28 @@
               <span>Programmatic tooltip</span>
             </v-tooltip>
           </v-row>
+          <div class="d-flex justify-space-around">
+            <v-btn>
+              End
+              <v-tooltip activator="parent" location="end">Tooltip</v-tooltip>
+            </v-btn>
+
+            <v-btn>
+              Top
+              <v-tooltip activator="parent" location="top">Tooltip</v-tooltip>
+            </v-btn>
+
+            <v-btn>
+              Bottom
+              <v-tooltip activator="parent" location="bottom"
+                >Tooltip</v-tooltip
+              >
+            </v-btn>
+            <v-btn>
+              Start
+              <v-tooltip activator="parent" location="start">Tooltip</v-tooltip>
+            </v-btn>
+          </div>
         </template>
       </v-card>
 
@@ -71,11 +95,18 @@
         ></v-switch>
       </v-card>
       <v-card width="400" class="ma-2">
+        <h3 class="mt-4">This is Tabs</h3>
         <v-tabs dark v-model="tab" color="primary">
           <v-tab value="one">Item One</v-tab>
           <v-tab value="two">Item Two</v-tab>
           <v-tab value="three">Item Three</v-tab>
         </v-tabs>
+        <h3 class="mt-4">This is Breadcrumbs</h3>
+        <v-breadcrumbs :items="breadcrumbs">
+          <template v-slot:divider>
+            <v-icon color="primary" icon="mdi-chevron-right"></v-icon>
+          </template>
+        </v-breadcrumbs>
       </v-card>
     </div>
   </v-app>
@@ -86,4 +117,21 @@ import { ref, reactive } from "vue";
 const toggle = ref("2");
 const tab = ref("");
 const showTip = ref(false);
+const breadcrumbs = ref([
+  {
+    title: "Dashboard",
+    disabled: false,
+    href: "breadcrumbs_dashboard",
+  },
+  {
+    title: "Link 1",
+    disabled: false,
+    href: "breadcrumbs_link_1",
+  },
+  {
+    title: "Link 2",
+    disabled: true,
+    href: "breadcrumbs_link_2",
+  },
+]);
 </script>
