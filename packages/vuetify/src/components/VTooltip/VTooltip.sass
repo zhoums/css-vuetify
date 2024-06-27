@@ -1,51 +1,53 @@
 @use '../../styles/settings'
+@use '../../styles/tools'
 @use './variables' as *
 
-.v-tooltip
-  > .v-overlay__content
-    background: $tooltip-background-color
-    color: $tooltip-text-color
-    border-radius: $tooltip-border-radius
-    font-size: $tooltip-font-size
-    line-height: $tooltip-line-height
-    display: inline-block
-    padding: $tooltip-padding
-    text-transform: initial
-    width: auto
-    opacity: 1
-    pointer-events: none
-    transition-property: opacity, transform
-    overflow-wrap: $tooltip-overflow-wrap
-    &::after
-      content: ""
-      width: 8px
-      height: 8px
-      border: solid $tooltip-background-color
+@include tools.layer('components')
+  .v-tooltip
+    > .v-overlay__content
       background: $tooltip-background-color
-      border-width: 2px 2px 0 0
-      transform: translate(-50%, -50%) rotate(-45deg)
-      position: absolute
-      left: 50%
-      bottom: -8px
-    &[style*="transform-origin: left center"]::after
-      transform: translate(-50%, -50%) rotate(-135deg)
-      left: 0px
-      top: 50%
-      bottom: auto
-    &[style*="transform-origin: right center"]::after
-      top: 50%
-      left: auto
-      right: -8px
-      transform: translate(-50%, -50%) rotate(-135deg)
-      bottom: auto
-    &[style*="transform-origin: center to"]::after
-      top: 0px
-      bottom: auto
+      color: $tooltip-text-color
+      border-radius: $tooltip-border-radius
+      font-size: $tooltip-font-size
+      line-height: $tooltip-line-height
+      display: inline-block
+      padding: $tooltip-padding
+      text-transform: initial
+      width: auto
+      opacity: 1
+      pointer-events: none
+      transition-property: opacity, transform
+      overflow-wrap: $tooltip-overflow-wrap
+      &::after
+        content: ""
+        width: 8px
+        height: 8px
+        border: solid $tooltip-background-color
+        background: $tooltip-background-color
+        border-width: 2px 2px 0 0
+        transform: translate(-50%, -50%) rotate(-45deg)
+        position: absolute
+        left: 50%
+        bottom: -8px
+      &[style*="transform-origin: left center"]::after
+        transform: translate(-50%, -50%) rotate(-135deg)
+        left: 0px
+        top: 50%
+        bottom: auto
+      &[style*="transform-origin: right center"]::after
+        top: 50%
+        left: auto
+        right: -8px
+        transform: translate(-50%, -50%) rotate(-135deg)
+        bottom: auto
+      &[style*="transform-origin: center to"]::after
+        top: 0px
+        bottom: auto
 
-    &[class*="enter-active"]
-      transition-timing-function: settings.$decelerated-easing
-      transition-duration: $tooltip-transition-enter-duration
+      &[class*="enter-active"]
+        transition-timing-function: settings.$decelerated-easing
+        transition-duration: $tooltip-transition-enter-duration
 
-    &[class*="leave-active"]
-      transition-timing-function: settings.$accelerated-easing
-      transition-duration: $tooltip-transition-leave-duration
+      &[class*="leave-active"]
+        transition-timing-function: settings.$accelerated-easing
+        transition-duration: $tooltip-transition-leave-duration

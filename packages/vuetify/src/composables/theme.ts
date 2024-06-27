@@ -287,7 +287,7 @@ export function createTheme(
   const styles = computed(() => {
     const lines: string[] = [];
 
-    if (current.value.dark) {
+    if (current.value?.dark) {
       createCssClass(lines, ":root", ["color-scheme: dark"]);
     }
 

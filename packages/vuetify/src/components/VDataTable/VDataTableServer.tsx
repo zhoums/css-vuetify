@@ -3,6 +3,7 @@ import { makeDataTableProps } from './VDataTable'
 import { makeVDataTableFooterProps, VDataTableFooter } from './VDataTableFooter'
 import { VDataTableHeaders } from './VDataTableHeaders'
 import { VDataTableRows } from './VDataTableRows'
+import { VDivider } from '@/components/VDivider'
 import { VTable } from '@/components/VTable'
 
 // Composables
@@ -164,37 +165,45 @@ export const VDataTableServer = genericComponent<new <T extends readonly any[], 
             default: () => slots.default ? slots.default(slotProps.value) : (
               <>
                 { slots.colgroup?.(slotProps.value) }
-                <thead class="v-data-table__thead" role="rowgroup">
-                  <VDataTableHeaders
-                    { ...dataTableHeadersProps }
-                    sticky={ props.fixedHeader }
-                    v-slots={ slots }
-                  />
-                </thead>
-                { slots.thead?.(slotProps.value) }
-                <tbody class="v-data-table__tbody" role="rowgroup">
-                  { slots['body.prepend']?.(slotProps.value) }
-                  { slots.body ? slots.body(slotProps.value) : (
-                    <VDataTableRows
-                      { ...attrs }
-                      { ...dataTableRowsProps }
-                      items={ flatItems.value }
+                { !props.hideDefaultHeader && (
+                  <thead key="thead" class="v-data-table__thead" role="rowgroup">
+                    <VDataTableHeaders
+                      { ...dataTableHeadersProps }
+                      sticky={ props.fixedHeader }
                       v-slots={ slots }
                     />
-                  )}
-                  { slots['body.append']?.(slotProps.value) }
-                </tbody>
+                  </thead>
+                )}
+                { slots.thead?.(slotProps.value) }
+                { !props.hideDefaultBody && (
+                  <tbody class="v-data-table__tbody" role="rowgroup">
+                    { slots['body.prepend']?.(slotProps.value) }
+                    { slots.body ? slots.body(slotProps.value) : (
+                      <VDataTableRows
+                        { ...attrs }
+                        { ...dataTableRowsProps }
+                        items={ flatItems.value }
+                        v-slots={ slots }
+                      />
+                    )}
+                    { slots['body.append']?.(slotProps.value) }
+                  </tbody>
+                )}
                 { slots.tbody?.(slotProps.value) }
                 { slots.tfoot?.(slotProps.value) }
               </>
             ),
-            bottom: () => slots.bottom ? slots.bottom(slotProps.value) : (
-              <VDataTableFooter
-                { ...dataTableFooterProps }
-                v-slots={{
-                  prepend: slots['footer.prepend'],
-                }}
-              />
+            bottom: () => slots.bottom ? slots.bottom(slotProps.value) : !props.hideDefaultFooter && (
+              <>
+                <VDivider />
+
+                <VDataTableFooter
+                  { ...dataTableFooterProps }
+                  v-slots={{
+                    prepend: slots['footer.prepend'],
+                  }}
+                />
+              </>
             ),
           }}
         </VTable>

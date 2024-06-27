@@ -1,12 +1,12 @@
 <template>
   <v-app>
+    <VoNotificationsBanner order="-1" />
+
     <AppSettingsDrawer />
 
     <AppBarBar />
 
     <AppDrawerDrawer />
-
-    <AppSnackbarQueue />
 
     <v-main>
       <router-view v-slot="{ Component }">
