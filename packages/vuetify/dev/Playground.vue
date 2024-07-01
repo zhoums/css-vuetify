@@ -93,6 +93,15 @@
           color="golden"
           label="Switch"
         ></v-switch>
+        <v-row class="ma-0 mx-3">
+          <v-slider
+            v-model="slider"
+            step="2"
+            color="golden"
+            min="0"
+            max="50"
+          ></v-slider>
+        </v-row>
       </v-card>
       <v-card width="400" class="ma-2">
         <h3 class="mt-4">This is Tabs</h3>
@@ -106,7 +115,32 @@
           <template v-slot:divider>
             <v-icon color="primary" icon="mdi-chevron-right"></v-icon>
           </template>
+          <template v-slot:title="{ item }">
+            <template v-if="item.title === 'Home'">
+              <v-icon color="primary" size="24" icon="mdi-home"></v-icon>
+            </template>
+            <template v-else>
+              {{ item.title }}
+            </template>
+          </template>
         </v-breadcrumbs>
+        <div class="mt-3 px-3" style="position: relative">
+          <h3 class="my-1">This is Floating Button</h3>
+          <v-speed-dial location="left bottom" transition="scale-transition">
+            <template v-slot:activator="{ props: activatorProps }">
+              <v-fab
+                v-bind="activatorProps"
+                size="large"
+                icon="$vuetify"
+              ></v-fab>
+            </template>
+
+            <v-btn key="1" icon="$success"></v-btn>
+            <v-btn key="2" icon="$info"></v-btn>
+            <v-btn key="3" icon="$warning"></v-btn>
+            <v-btn key="4" icon="$error"></v-btn>
+          </v-speed-dial>
+        </div>
       </v-card>
     </div>
   </v-app>
@@ -116,10 +150,11 @@
 import { ref, reactive } from "vue";
 const toggle = ref("2");
 const tab = ref("");
+const slider = ref(2);
 const showTip = ref(false);
 const breadcrumbs = ref([
   {
-    title: "Dashboard",
+    title: "Home",
     disabled: false,
     href: "breadcrumbs_dashboard",
   },
